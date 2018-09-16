@@ -1,0 +1,16 @@
+
+### Get request waiting a lognormal time
+GET http://localhost:5000/wait/lognormal
+Accept: application/json
+
+### Get request that mirrors the headers
+GET http://localhost:5000/mirror/headers
+Accept: application/json
+
+### Get request that returns given response code
+GET http://localhost:5000/response/419
+Accept: application/json
+
+###
+
+
