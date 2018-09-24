@@ -11,6 +11,14 @@ Accept: application/json
 GET http://localhost:5000/response/419
 Accept: application/json
 
+### POST request that save request in log
+POST http://localhost:5000/log
+Content-Type: application/json
+
+{
+  "temperature": 22.5,
+  "humidity": 65
+}
 ###
 
 

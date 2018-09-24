@@ -9,14 +9,16 @@ import config
 app = Flask(__name__)
 app.logger.setLevel(INFO)
 
+allowed_methods = ['GET', 'POST']
 
-@app.route('/mirror/headers')
+
+@app.route('/mirror/headers', methods=allowed_methods)
 def mirror():
     app.logger.info(f'Mirror headers received:\n{request.headers}')
     return str(request.headers)
 
 
-@app.route('/wait/lognormal')
+@app.route('/wait/lognormal', methods=allowed_methods)
 def wait_lognormal():
     sleep_time = get_lognormal_response_time()
     app.logger.info(f'Wait lognormal - Response time:\n{sleep_time}')
@@ -24,14 +26,14 @@ def wait_lognormal():
     return f'{str(sleep_time)}s'
 
 
-@app.route('/response/<int:response_code>')
+@app.route('/response/<int:response_code>', methods=allowed_methods)
 def choose_response(response_code):
     return str(request), response_code
 
 
-@app.route('/log')
+@app.route('/log', methods=allowed_methods)
 def log():
-    app.logger.info(f'Headers:\n{request.headers}\n--------\n{request.get_json}')
+    app.logger.info(f'\n*****\nHeaders:\n{request.headers}\n--------\n{request.get_json()}')
     return 'Ok'
 
 
